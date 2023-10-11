@@ -76,7 +76,8 @@ public class LoginWindow extends JFrame implements LibWindow {
     		getContentPane().add(mainPanel);
     		isInitialized(true);
     		pack();
-    		//setSize(660, 500);
+			// Below line modified by Geoffrey
+    		setSize(660, 500);
 
     	
     }
