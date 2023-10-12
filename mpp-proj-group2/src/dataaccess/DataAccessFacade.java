@@ -22,8 +22,9 @@ public class DataAccessFacade implements DataAccess {
 	}
 	
 	public static final String OUTPUT_DIR = System.getProperty("user.dir")
-			+ "/src/dataaccess/storage"; //for Unix file system
-//			+ "\\src\\dataaccess\\storage"; //for Windows file system
+			+ "\\src\\dataaccess\\storage"; //for Windows file system
+			//+ "/src/dataaccess/storage"; //for Unix file system
+
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
 	//implement: other save operations
