@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import business.controllers.SystemController;
+import business.SystemController;
 
 public class LibrarySystem extends JFrame implements LibWindow {
 

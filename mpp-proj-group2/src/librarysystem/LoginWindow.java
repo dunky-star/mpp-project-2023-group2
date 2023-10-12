@@ -17,8 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JOptionPane;
 
 import business.Group2Exception;
-import business.controllers.SystemController;
-import business.interfaces.ControllerInterface;
+import business.SystemController;
+import business.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 

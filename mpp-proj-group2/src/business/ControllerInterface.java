@@ -1,4 +1,4 @@
-package business.interfaces;
+package business;
 
 import business.*;
 import dataaccess.Auth;

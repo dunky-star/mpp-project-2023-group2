@@ -1,8 +1,8 @@
 package librarysystem;
 
 import business.*;
-import business.controllers.SystemController;
-import business.interfaces.ControllerInterface;
+import business.SystemController;
+import business.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 

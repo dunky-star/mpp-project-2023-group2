@@ -1,7 +1,5 @@
-package business.controllers;
+package business;
 
-import business.*;
-import business.interfaces.ControllerInterface;
 import dataaccess.Auth;
 import dataaccess.DataAccess;
 import dataaccess.DataAccessFacade;

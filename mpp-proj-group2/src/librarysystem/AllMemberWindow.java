@@ -10,8 +10,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import business.LibraryMember;
-import business.interfaces.ControllerInterface;
-import business.controllers.SystemController;
+import business.ControllerInterface;
+import business.SystemController;
 
 public class AllMemberWindow extends JFrame implements LibWindow {
 	public static final AllMemberWindow INSTANCE = new AllMemberWindow();

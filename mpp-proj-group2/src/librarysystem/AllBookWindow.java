@@ -2,8 +2,8 @@ package librarysystem;
 
 import business.Book;
 import business.Group2Exception;
-import business.controllers.SystemController;
-import business.interfaces.ControllerInterface;
+import business.SystemController;
+import business.ControllerInterface;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
