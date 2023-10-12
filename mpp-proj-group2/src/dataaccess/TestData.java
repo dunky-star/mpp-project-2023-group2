@@ -21,13 +21,18 @@ import business.LibraryMember;
  */
 public class TestData {
 	
-	
+	public static void initData(){
+		main(new String[]{});
+	}
 	public static void main(String[] args) {
 		TestData td = new TestData();
 		td.bookData();
 		td.libraryMemberData();
 		td.userData();
+		td.authorData();
+		td.recordData();
 		DataAccess da = new DataAccessFacade();
+
 		System.out.println(da.readBooksMap());
 		System.out.println(da.readUserMap());
 	}
@@ -45,7 +50,11 @@ public class TestData {
 	public void userData() {
 		DataAccessFacade.loadUserMap(allUsers);
 	}
-	
+
+	public void recordData() {
+		DataAccessFacade.loadRecordMap(new ArrayList<>());
+	}
+
 	//create library members
 	public void libraryMemberData() {
 		LibraryMember libraryMember = new LibraryMember("1001", "Andy", "Rogers", "641-223-2211", addresses.get(4));
@@ -88,7 +97,11 @@ public class TestData {
 			add(new Author("Sarah", "Connor", "123-422-2663", addresses.get(3), "Known for her clever style."));
 		}
 	};
-	
+
+	public void authorData() {
+		DataAccessFacade.loadAuthorMap(allAuthors);
+	}
+
 	@SuppressWarnings("serial")
 	List<Book> allBooks = new ArrayList<Book>() {
 		{
