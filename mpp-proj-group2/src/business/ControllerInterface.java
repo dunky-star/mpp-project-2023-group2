@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface ControllerInterface {
-	public static Auth currentAuth = null;
+	// public static Auth currentAuth = null;
 
 	/**
 	 * Login handling
