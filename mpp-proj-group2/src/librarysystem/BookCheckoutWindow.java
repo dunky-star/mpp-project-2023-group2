@@ -28,7 +28,7 @@ public class BookCheckoutWindow extends JFrame implements LibWindow, ControllerI
     private JSplitPane splitPaneOuter;
 
     private JPanel memberIDPanel = new JPanel(new BorderLayout());
-    private JLabel memberIDLabel = new JLabel("memberID");
+    private JLabel memberIDLabel = new JLabel("Member ID");
     private JTextField memberIDTextField = new JTextField(10);
 
     private JPanel isbnPanel = new JPanel(new BorderLayout());
@@ -93,7 +93,7 @@ public class BookCheckoutWindow extends JFrame implements LibWindow, ControllerI
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to Book Checkout!");
+        textArea = new JTextArea("Welcome to the Book Checkout!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPanel.add(textArea,BorderLayout.NORTH);
@@ -135,7 +135,7 @@ public class BookCheckoutWindow extends JFrame implements LibWindow, ControllerI
             }
             showInfo("");
             clearTextFields();
-            JOptionPane.showMessageDialog(this,"Successful checkout " + getISBN());
+            JOptionPane.showMessageDialog(this,"Successfully checked out " + getISBN());
             reloadTable(memberID);
         });
         middlePanel.add(buttonPanel);

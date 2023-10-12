@@ -167,7 +167,7 @@ public class BookDetailWindow extends JFrame implements LibWindow, ControllerInt
         dataTablePanel.add(featurePanel, BorderLayout.NORTH);
 
         List<BookCopy> data = Arrays.asList(book.getCopies());
-        String[] columnNames = new String[]{"BookNumber","Is Available"};
+        String[] columnNames = new String[]{"BookNumber","Is available"};
 
         String[][] dataTable = new String[data.size()][2];
 
@@ -188,7 +188,7 @@ public class BookDetailWindow extends JFrame implements LibWindow, ControllerInt
         dataTablePanel.add(new JScrollPane(bookCopyTable), BorderLayout.CENTER);
 
         List<Author> authors = book.getAuthors();
-        String[] columnNameAuthors = new String[]{"First Name","Last Name","Tel","Bio","Street","City","Zipcode","State"};
+        String[] columnNameAuthors = new String[]{"First Name","Last Name","Tel.","Bio","Street","City","Zipcode","State"};
 
         String[][] dataTableAuthor = new String[authors.size()][2];
 

@@ -82,7 +82,7 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 		middlePanel.add(featurePanel, BorderLayout.NORTH);
 
 		List<LibraryMember> data = getAllLibraryMember();
-		String[] columnNames = new String[]{"Member ID","First Name","Last Name","Tel","Street","City","Zipcode","State", "Records"};
+		String[] columnNames = new String[]{"Member ID","First Name","Last Name","Tel.","Street","City","Zipcode","State", "Records"};
 
 		String[][] dataTable = new String[data.size()][8];
 

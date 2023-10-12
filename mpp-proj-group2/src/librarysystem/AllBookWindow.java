@@ -114,7 +114,7 @@ public class AllBookWindow extends JFrame implements LibWindow {
 					EventQueue.invokeLater(() ->
 					{
 						BookDetailWindow bookDetailWindow = new BookDetailWindow();
-						bookDetailWindow.setTitle("Prius Library System 1.0.0");
+						bookDetailWindow.setTitle("Group 2: Library management System v1.0.0");
 						try {
 							bookDetailWindow.setBook(isbn);
 						} catch (Group2Exception e) {

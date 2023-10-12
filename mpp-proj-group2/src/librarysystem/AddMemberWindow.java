@@ -108,7 +108,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, ControllerInte
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to the Library System!");
+        textArea = new JTextArea("Welcome to the Group 2: Library Management System v1.0.0!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPPanel.add(textArea,BorderLayout.NORTH);
@@ -170,7 +170,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, ControllerInte
             }
             showInfo("");
             clearTextFields();
-            JOptionPane.showMessageDialog(this,"Successful added " + getMemberID());
+            JOptionPane.showMessageDialog(this,"Successfully added " + getMemberID());
         });
 
     }

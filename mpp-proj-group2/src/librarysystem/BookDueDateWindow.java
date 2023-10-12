@@ -88,7 +88,7 @@ public class BookDueDateWindow extends JFrame implements LibWindow, ControllerIn
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to Book Checkout!");
+        textArea = new JTextArea("Welcome to the Book Checkout Checking!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPanel.add(textArea,BorderLayout.NORTH);

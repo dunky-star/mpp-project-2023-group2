@@ -78,7 +78,7 @@ public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerIn
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to the Library System!");
+        textArea = new JTextArea("Welcome to the Group 2: Library Management System v1.0.0!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPPanel.add(textArea,BorderLayout.NORTH);
@@ -120,7 +120,7 @@ public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerIn
                 rules.applyRules(AddBookCopyWindow.this);
                 Book book = bookInterface.addBookCopyByISBN(getISBN());
                 showInfo("");
-                JOptionPane.showMessageDialog(this,"Copy of book is added.");
+                JOptionPane.showMessageDialog(this,"Copy of the book is added successfully.");
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
                 showError(e.getMessage());
