@@ -51,7 +51,7 @@ public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerIn
             return;
         }
 
-        setSize(600,500);
+        setSize(1000,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         updateHeaderLabel();

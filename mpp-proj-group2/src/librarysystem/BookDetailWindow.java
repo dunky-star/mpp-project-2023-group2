@@ -60,7 +60,7 @@ public class BookDetailWindow extends JFrame implements LibWindow, ControllerInt
     @Override
     public void init() {
 
-        setSize(600,100);
+        setSize(1000,500);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         //setResizable(false);
         updateHeaderLabel();
