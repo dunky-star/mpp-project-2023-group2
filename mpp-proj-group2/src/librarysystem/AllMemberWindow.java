@@ -9,9 +9,7 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import business.controllers.MemberController;
 import business.LibraryMember;
-import business.interfaces.MemberInterface;
 import business.interfaces.ControllerInterface;
 import business.controllers.SystemController;
 
@@ -19,7 +17,7 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 	public static final AllMemberWindow INSTANCE = new AllMemberWindow();
     ControllerInterface ci = new SystemController();
 
-	MemberInterface memberInterface = new MemberController();
+	ControllerInterface memberInterface = new SystemController();
 	private boolean isInitialized = false;
 	public JPanel getMainPanel() {
 		return mainPanel;

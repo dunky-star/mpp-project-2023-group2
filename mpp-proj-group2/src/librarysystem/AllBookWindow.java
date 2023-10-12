@@ -1,9 +1,9 @@
 package librarysystem;
 
-import business.controllers.BookController;
 import business.Book;
 import business.Group2Exception;
-import business.interfaces.BookInterface;
+import business.controllers.SystemController;
+import business.interfaces.ControllerInterface;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AllBookWindow extends JFrame implements LibWindow {
 	public static final AllBookWindow INSTANCE = new AllBookWindow();
-    BookInterface bi = new BookController();
+    ControllerInterface bi = new SystemController();
 	private boolean isInitialized = false;
 	public JPanel getMainPanel() {
 		return mainPanel;

@@ -1,15 +1,8 @@
 package librarysystem;
 
-import business.Book;
-import business.BookCopy;
-import business.CheckoutRecordEntry;
-import business.LibraryMember;
-import business.controllers.BookController;
-import business.controllers.MemberController;
-import business.Group2Exception;
-import business.interfaces.BookInterface;
-import business.interfaces.MemberInterface;
-import business.interfaces.MessageInterface;
+import business.*;
+import business.controllers.SystemController;
+import business.interfaces.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 
@@ -17,13 +10,14 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 
-public class BookDueDateWindow extends JFrame implements LibWindow, MessageInterface {
+public class BookDueDateWindow extends JFrame implements LibWindow, ControllerInterface {
 
-    private final BookInterface bookInterface = new BookController();
-    private final MemberInterface memberInterface = new MemberController();
+    private final ControllerInterface bookInterface = new SystemController();
+    private final ControllerInterface memberInterface = new SystemController();
 
     public static String title = "Book Overdue Checking";
 
@@ -169,6 +163,12 @@ public class BookDueDateWindow extends JFrame implements LibWindow, MessageInter
     private void clearTextFields() {
         isbnTextField.setText("");
     }
+
+    @Override
+    public void login(String id, String password) throws Group2Exception {
+
+    }
+
     @Override
     public void showError(String string) {
         textArea.setForeground(Util.ERROR_MESSAGE_COLOR);
@@ -179,6 +179,71 @@ public class BookDueDateWindow extends JFrame implements LibWindow, MessageInter
     public void showInfo(String info) {
         textArea.setForeground(Util.INFO_MESSAGE_COLOR);
         textArea.setText(info);
+    }
+
+    @Override
+    public List<LibraryMember> getAllLibraryMember() {
+        return null;
+    }
+
+    @Override
+    public LibraryMember createLibraryMember(String memberID, String firstName, String lastName, String street, String city, String zip, String state, String tel) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public CheckoutRecord getRecord(String memberID) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBook() {
+        return null;
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBook(String ISBN, String title, int maxCheckoutLength, List<Author> authors, List<BookCopy> copies) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public BookCopy addBookCopy(Book book) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public void updateBookCopyStatus(Book book, BookCopy bookCopy, boolean newStatus) throws Group2Exception {
+
+    }
+
+    @Override
+    public Book checkout(String memberID, String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBookCopyByISBN(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public HashMap<BookCopy, LibraryMember> find(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthor() {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthorByBook(String ISBN) {
+        return null;
     }
 
     private void reloadTable(HashMap<BookCopy, LibraryMember> map, String isbn) {

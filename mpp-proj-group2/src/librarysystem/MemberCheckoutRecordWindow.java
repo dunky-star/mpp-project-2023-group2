@@ -1,22 +1,20 @@
 package librarysystem;
 
-import business.controllers.MemberController;
-import business.CheckoutRecord;
-import business.CheckoutRecordEntry;
-import business.Group2Exception;
-import business.interfaces.MemberInterface;
-import business.interfaces.MessageInterface;
+import business.*;
+import business.controllers.SystemController;
+import business.interfaces.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.List;
 
 
-public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, MessageInterface {
+public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, ControllerInterface {
 
-    private final MemberInterface memberInterface = new MemberController();
+    private final ControllerInterface memberInterface = new SystemController();
 
     public static String title = "Member Checkout Record";
 
@@ -27,7 +25,7 @@ public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, Mes
     private JSplitPane splitPaneOuter;
 
     private JPanel memberIDPanel = new JPanel(new BorderLayout());
-    private JLabel memberIDLabel = new JLabel("memberID");
+    private JLabel memberIDLabel = new JLabel("Member ID");
     private JTextField memberIDTextField = new JTextField(10);
 
 
@@ -82,7 +80,7 @@ public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, Mes
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to Checkout printer!");
+        textArea = new JTextArea("Welcome to the Checkout printer!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPanel.add(textArea,BorderLayout.NORTH);
@@ -117,7 +115,7 @@ public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, Mes
                 rules.applyRules(MemberCheckoutRecordWindow.this);
                 print(getMemberID());
                 clearTextFields();
-                JOptionPane.showMessageDialog(this,"please check the console log");
+                JOptionPane.showMessageDialog(this,"Please check the console log");
             }catch (Group2Exception e) {
                 showError(e.getMessage());
             }
@@ -150,6 +148,12 @@ public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, Mes
     private void clearTextFields() {
         memberIDTextField.setText("");
     }
+
+    @Override
+    public void login(String id, String password) throws Group2Exception {
+
+    }
+
     @Override
     public void showError(String string) {
         textArea.setForeground(Util.ERROR_MESSAGE_COLOR);
@@ -160,6 +164,71 @@ public class MemberCheckoutRecordWindow extends JFrame implements LibWindow, Mes
     public void showInfo(String info) {
         textArea.setForeground(Util.INFO_MESSAGE_COLOR);
         textArea.setText(info);
+    }
+
+    @Override
+    public List<LibraryMember> getAllLibraryMember() {
+        return null;
+    }
+
+    @Override
+    public LibraryMember createLibraryMember(String memberID, String firstName, String lastName, String street, String city, String zip, String state, String tel) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public CheckoutRecord getRecord(String memberID) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBook() {
+        return null;
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBook(String ISBN, String title, int maxCheckoutLength, List<Author> authors, List<BookCopy> copies) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public BookCopy addBookCopy(Book book) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public void updateBookCopyStatus(Book book, BookCopy bookCopy, boolean newStatus) throws Group2Exception {
+
+    }
+
+    @Override
+    public Book checkout(String memberID, String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBookCopyByISBN(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public HashMap<BookCopy, LibraryMember> find(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthor() {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthorByBook(String ISBN) {
+        return null;
     }
 
     private void print(String memberID) throws Group2Exception {

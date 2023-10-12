@@ -16,9 +16,9 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JOptionPane;
 
-import business.controllers.LoginController;
 import business.Group2Exception;
-import business.interfaces.LoginInterface;
+import business.controllers.SystemController;
+import business.interfaces.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 
@@ -26,7 +26,7 @@ import librarysystem.rulesets.RuleSetFactory;
 public class LoginWindow extends JFrame implements LibWindow {
     public static final LoginWindow INSTANCE = new LoginWindow();
 
-	private LoginInterface loginInterface = new LoginController();
+	private ControllerInterface loginHandling = new SystemController();
 
 	private boolean isInitialized = false;
 	
@@ -193,14 +193,14 @@ public class LoginWindow extends JFrame implements LibWindow {
 				try {
 					RuleSet rules = RuleSetFactory.getRuleSet(LoginWindow.this);
 					rules.applyRules(LoginWindow.this);
-					loginInterface.login(getUsername(),getPassword());
+					loginHandling.login(getUsername(),getPassword());
 				} catch (Group2Exception e) {
 					JOptionPane.showMessageDialog(this,e.getMessage());
 					return;
 				}
 
 				clearTextFields();
-				JOptionPane.showMessageDialog(this,"Successful Login");
+				JOptionPane.showMessageDialog(this,"Successfully logged-in");
 				LibrarySystem.hideAllWindows();
 				LibrarySystem.INSTANCE.setVisible(true);
 				LibrarySystem.INSTANCE.reload();
