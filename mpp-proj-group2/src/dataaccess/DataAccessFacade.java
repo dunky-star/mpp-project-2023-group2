@@ -10,19 +10,21 @@ import java.util.HashMap;
 import java.util.List;
 
 import business.Book;
-import business.BookCopy;
+import business.CheckoutRecord;
 import business.LibraryMember;
-import dataaccess.DataAccessFacade.StorageType;
+import business.Author;
 
 
 public class DataAccessFacade implements DataAccess {
 	
 	enum StorageType {
-		BOOKS, MEMBERS, USERS;
+		BOOKS, MEMBERS, USERS, AUTHORS, RECORDS;
 	}
 	
-	public static final String OUTPUT_DIR = System.getProperty("user.dir") 
-			+ "\\src\\dataaccess\\storage";
+	public static final String OUTPUT_DIR = System.getProperty("user.dir")
+			+ "\\src\\dataaccess\\storage"; //for Windows file system
+			//+ "/src/dataaccess/storage"; //for Unix file system
+
 	public static final String DATE_PATTERN = "MM/dd/yyyy";
 	
 	//implement: other save operations
@@ -32,6 +34,26 @@ public class DataAccessFacade implements DataAccess {
 		mems.put(memberId, member);
 		saveToStorage(StorageType.MEMBERS, mems);	
 	}
+
+	public void updateBook(Book book){
+		HashMap<String, Book> books = readBooksMap();
+		String isbn = book.getIsbn();
+		books.put(isbn, book);
+		saveToStorage(StorageType.BOOKS, books);
+	}
+
+	public void saveNewRecord(CheckoutRecord record){
+		HashMap<String, CheckoutRecord> recordsMap = readRecordsMap();
+		String recordID = record.getRecordID();
+		recordsMap.put(recordID, record);
+		saveToStorage(StorageType.RECORDS, recordsMap);
+	}
+
+	public  HashMap<String,CheckoutRecord> readRecordsMap() {
+		//Returns a Map with name/value pairs being
+		//   isbn -> Book
+		return (HashMap<String,CheckoutRecord>) readFromStorage(StorageType.RECORDS);
+	}
 	
 	@SuppressWarnings("unchecked")
 	public  HashMap<String,Book> readBooksMap() {
@@ -39,7 +61,13 @@ public class DataAccessFacade implements DataAccess {
 		//   isbn -> Book
 		return (HashMap<String,Book>) readFromStorage(StorageType.BOOKS);
 	}
-	
+
+	public  HashMap<String,Author> readAuthorsMap() {
+		//Returns a Map with name/value pairs being
+		//   isbn -> Book
+		return (HashMap<String,Author>) readFromStorage(StorageType.AUTHORS);
+	}
+
 	@SuppressWarnings("unchecked")
 	public HashMap<String, LibraryMember> readMemberMap() {
 		//Returns a Map with name/value pairs being
@@ -61,24 +89,39 @@ public class DataAccessFacade implements DataAccess {
 	///// - used just once at startup  
 	
 		
-	static void loadBookMap(List<Book> bookList) {
+	public static void loadBookMap(List<Book> bookList) {
 		HashMap<String, Book> books = new HashMap<String, Book>();
-		bookList.forEach(book -> books.put(book.getIsbn(), book));
+		for (Book book : bookList) {
+			books.put(book.getIsbn(), book);
+		}
+//		bookList.forEach(book -> books.put(book.getIsbn(), book));
 		saveToStorage(StorageType.BOOKS, books);
 	}
-	static void loadUserMap(List<User> userList) {
+	public static void loadUserMap(List<User> userList) {
 		HashMap<String, User> users = new HashMap<String, User>();
 		userList.forEach(user -> users.put(user.getId(), user));
 		saveToStorage(StorageType.USERS, users);
 	}
- 
-	static void loadMemberMap(List<LibraryMember> memberList) {
+
+	public static void loadAuthorMap(List<Author> authorList) {
+		HashMap<String, Author> authors = new HashMap<String, Author>();
+		authorList.forEach(author -> authors.put(author.getAuthorId(), author));
+		saveToStorage(StorageType.AUTHORS, authors);
+	}
+
+	public static void loadRecordMap(List<CheckoutRecord> authorList) {
+		HashMap<String, CheckoutRecord> authors = new HashMap<String, CheckoutRecord>();
+		authorList.forEach(author -> authors.put(author.getRecordID(), author));
+		saveToStorage(StorageType.RECORDS, authors);
+	}
+
+	public static void loadMemberMap(List<LibraryMember> memberList) {
 		HashMap<String, LibraryMember> members = new HashMap<String, LibraryMember>();
 		memberList.forEach(member -> members.put(member.getMemberId(), member));
 		saveToStorage(StorageType.MEMBERS, members);
 	}
-	
-	static void saveToStorage(StorageType type, Object ob) {
+
+	public static void saveToStorage(StorageType type, Object ob) {
 		ObjectOutputStream out = null;
 		try {
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
@@ -94,12 +137,16 @@ public class DataAccessFacade implements DataAccess {
 			}
 		}
 	}
-	
-	static Object readFromStorage(StorageType type) {
+
+	public static Object readFromStorage(StorageType type) {
 		ObjectInputStream in = null;
 		Object retVal = null;
 		try {
+			Files.createDirectories(FileSystems.getDefault().getPath(OUTPUT_DIR));
 			Path path = FileSystems.getDefault().getPath(OUTPUT_DIR, type.toString());
+			if (!Files.exists(path)) {
+				TestData.initData();
+			}
 			in = new ObjectInputStream(Files.newInputStream(path));
 			retVal = in.readObject();
 		} catch(Exception e) {
@@ -113,10 +160,10 @@ public class DataAccessFacade implements DataAccess {
 		}
 		return retVal;
 	}
-	
-	
-	
-	final static class Pair<S,T> implements Serializable{
+
+
+
+	public final static class Pair<S,T> implements Serializable{
 		
 		S first;
 		T second;

@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-import javax.swing.JLabel;
+import javax.swing.*;
 
 public class Util {
 	public static final Color DARK_BLUE = Color.BLUE.darker();
@@ -21,8 +21,8 @@ public class Util {
 	public static Font makeSmallFont(Font f) {
         return new Font(f.getName(), f.getStyle(), (f.getSize()-2));
     }
-	
-	public static void adjustLabelFont(JLabel label, Color color, boolean bigger) {
+
+	public static void adjustLabelFont(JComponent label, Color color, boolean bigger) {
 		if(bigger) {
 			Font f = new Font(label.getFont().getName(), 
 					label.getFont().getStyle(), (label.getFont().getSize()+2));

@@ -16,14 +16,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JOptionPane;
 
-import business.ControllerInterface;
-
-import business.SystemController;
+import business.controllers.LoginController;
+import business.Group2Exception;
+import business.interfaces.LoginInterface;
+import librarysystem.rulesets.RuleSet;
+import librarysystem.rulesets.RuleSetFactory;
 
 
 public class LoginWindow extends JFrame implements LibWindow {
     public static final LoginWindow INSTANCE = new LoginWindow();
-	
+
+	private LoginInterface loginInterface = new LoginController();
+
 	private boolean isInitialized = false;
 	
 	private JPanel mainPanel;
@@ -61,7 +65,10 @@ public class LoginWindow extends JFrame implements LibWindow {
 	/* This class is a singleton */
     private LoginWindow () {}
     
-    public void init() {     		
+    public void init() {
+			if (isInitialized) {
+				return;
+			}
     		mainPanel = new JPanel();
     		defineUpperHalf();
     		defineMiddleHalf();
@@ -76,8 +83,6 @@ public class LoginWindow extends JFrame implements LibWindow {
     		getContentPane().add(mainPanel);
     		isInitialized(true);
     		pack();
-    		//setSize(660, 500);
-
     	
     }
     private void defineUpperHalf() {
@@ -97,7 +102,6 @@ public class LoginWindow extends JFrame implements LibWindow {
     		middleHalf.setLayout(new BorderLayout());
     		JSeparator s = new JSeparator();
     		s.setOrientation(SwingConstants.HORIZONTAL);
-    		//middleHalf.add(Box.createRigidArea(new Dimension(0,50)));
     		middleHalf.add(s, BorderLayout.SOUTH);
     		
     	}
@@ -186,11 +190,33 @@ public class LoginWindow extends JFrame implements LibWindow {
     	
     	private void addLoginButtonListener(JButton butn) {
     		butn.addActionListener(evt -> {
-    			JOptionPane.showMessageDialog(this,"Successful Login");
-    				
+				try {
+					RuleSet rules = RuleSetFactory.getRuleSet(LoginWindow.this);
+					rules.applyRules(LoginWindow.this);
+					loginInterface.login(getUsername(),getPassword());
+				} catch (Group2Exception e) {
+					JOptionPane.showMessageDialog(this,e.getMessage());
+					return;
+				}
+
+				clearTextFields();
+				JOptionPane.showMessageDialog(this,"Successful Login");
+				LibrarySystem.hideAllWindows();
+				LibrarySystem.INSTANCE.setVisible(true);
+				LibrarySystem.INSTANCE.reload();
     		});
     	}
-	
-        
-    
+
+	private void clearTextFields() {
+		username.setText("");
+		password.setText("");
+	}
+
+	public String getUsername() {
+		return username.getText().trim();
+	}
+
+	public String getPassword() {
+		return password.getText().trim();
+	}
 }
