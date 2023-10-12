@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * Rules:
- *  1. All fields must be nonempty
+ *  1. Member ID cannot be empty!
  */
 
 public class MemberCheckoutRuleSet implements RuleSet {
@@ -21,7 +21,7 @@ public class MemberCheckoutRuleSet implements RuleSet {
 	private void nonEmptyRule() throws Group2Exception {
 		if(window.getMemberID().trim().isEmpty()
 		) {
-			throw new Group2Exception("Member ID must be non-empty!");
+			throw new Group2Exception("Member ID cannot be empty!");
 		}
 	}
 

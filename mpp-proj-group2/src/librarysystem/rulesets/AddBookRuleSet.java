@@ -7,9 +7,9 @@ import java.awt.*;
 
 /**
  * Rules:
- * 1. All fields must be nonempty
- * 2. Max length check out must be a number and large than 0.
- * 3. Number of copies must be a number and large than 0.
+ * 1. Fields cannot be empty
+ * 2. Max checkout length must be a number and greater than 0.
+ * 3. Number of copies must be a number and greater than 0.
  */
 public class AddBookRuleSet implements RuleSet {
 	private AddBookWindow bookWindow;
@@ -26,7 +26,7 @@ public class AddBookRuleSet implements RuleSet {
 				bookWindow.getBookTitle().trim().isEmpty()||
 				bookWindow.getMaxCheckOut().trim().isEmpty()||
 				bookWindow.getMaxCheckOut().trim().isEmpty()) {
-			throw new Group2Exception("Field must be non-empty!");
+			throw new Group2Exception("Fields cannot be empty!");
 		}
 	}
 
@@ -36,10 +36,10 @@ public class AddBookRuleSet implements RuleSet {
 			int maxLengthCheckout = Integer.parseInt(val);
 
 			if(maxLengthCheckout < 0)
-				throw new Group2Exception("Max length check out must large than 0");
+				throw new Group2Exception("Max checkout length must be greater than 0");
 
 		} catch(NumberFormatException e) {
-			throw new Group2Exception("Max length check out must be a number");
+			throw new Group2Exception("Max checkout length must be a number");
 		}
 	}
 
@@ -49,7 +49,7 @@ public class AddBookRuleSet implements RuleSet {
 			int numberOfCopies = Integer.parseInt(val);
 
 			if(numberOfCopies < 0)
-				throw new Group2Exception("Number of copies must large than 0");
+				throw new Group2Exception("Number of copies must be greater than 0");
 
 		} catch(NumberFormatException e) {
 			throw new Group2Exception("Number of copies must be a number");
