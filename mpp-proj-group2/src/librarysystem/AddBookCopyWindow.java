@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 
 
-public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerInterface {
+public class AddBookCopyWindow extends JFrame implements LibWindow {
     public static final AddBookCopyWindow INSTANCE = new AddBookCopyWindow();
     private JTextArea textArea;
 
@@ -119,11 +119,11 @@ public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerIn
                 RuleSet rules = RuleSetFactory.getRuleSet(AddBookCopyWindow.this);
                 rules.applyRules(AddBookCopyWindow.this);
                 Book book = bookInterface.addBookCopyByISBN(getISBN());
-                showInfo("");
+                bookInterface.showInfo("");
                 JOptionPane.showMessageDialog(this,"Copy of the book is added successfully.");
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
-                showError(e.getMessage());
+                bookInterface.showError(e.getMessage());
             }
         });
         bottomPanel.add(button);
@@ -159,88 +159,6 @@ public class AddBookCopyWindow extends JFrame implements LibWindow, ControllerIn
         middlePanel.add(rightAlignPanel);
     }
 
-
-    @Override
-    public void login(String id, String password) throws Group2Exception {
-
-    }
-
-    @Override
-    public void showError(String string) {
-        textArea.setForeground(Util.ERROR_MESSAGE_COLOR);
-        textArea.setText(string);
-    }
-
-    @Override
-    public void showInfo(String info) {
-        textArea.setForeground(Util.INFO_MESSAGE_COLOR);
-        textArea.setText(info);
-    }
-
-    @Override
-    public List<LibraryMember> getAllLibraryMember() {
-        return null;
-    }
-
-    @Override
-    public LibraryMember createLibraryMember(String memberID, String firstName, String lastName, String street, String city, String zip, String state, String tel) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public CheckoutRecord getRecord(String memberID) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public List<Book> getAllBook() {
-        return null;
-    }
-
-    @Override
-    public Book getBookById(String isbn) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public Book addBook(String ISBN, String title, int maxCheckoutLength, List<Author> authors, List<BookCopy> copies) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public BookCopy addBookCopy(Book book) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public void updateBookCopyStatus(Book book, BookCopy bookCopy, boolean newStatus) throws Group2Exception {
-
-    }
-
-    @Override
-    public Book checkout(String memberID, String isbn) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public Book addBookCopyByISBN(String isbn) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public HashMap<BookCopy, LibraryMember> find(String isbn) throws Group2Exception {
-        return null;
-    }
-
-    @Override
-    public List<Author> getAllAuthor() {
-        return null;
-    }
-
-    @Override
-    public List<Author> getAllAuthorByBook(String ISBN) {
-        return null;
-    }
 
     public String getISBN() {
         return isbnField.getText().trim();
