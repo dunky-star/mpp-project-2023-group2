@@ -65,7 +65,7 @@ public class TestData {
 		libraryMember = new LibraryMember("1003", "Tonny", "Kakooza", "451-234-8811", addresses.get(6));
 		members.add(libraryMember);
 		
-		libraryMember = new LibraryMember("1004", "Talal", "Qiad", "641-472-2871", addresses.get(7));
+		libraryMember = new LibraryMember("1004", "Talal", "Qaid", "641-472-2871", addresses.get(7));
 		members.add(libraryMember);
 
 		libraryMember = new LibraryMember("1005", "Andy", "Rogers", "641-223-2210", addresses.get(4));

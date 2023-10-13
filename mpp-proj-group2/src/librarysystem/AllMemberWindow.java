@@ -36,8 +36,10 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 	
 	public void init() {
 		if(isInitialized){
+			//setSize(1000,500);
 			return;
 		}
+		//setSize(1000,500);
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		defineTopPanel();

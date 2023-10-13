@@ -81,7 +81,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, ControllerInte
         if (isInitialized) {
             return;
         }
-        setSize(600,500);
+        setSize(1000,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         updateHeaderLabel();
@@ -336,7 +336,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, ControllerInte
     }
 
     public String getStateString() {
-        return zipCodeField.getText();
+        return stateField.getText();
     }
 
 
