@@ -1,13 +1,8 @@
 package librarysystem;
 
-import business.controllers.AuthorController;
-import business.controllers.BookController;
-import business.Author;
-import business.Book;
-import business.Group2Exception;
-import business.interfaces.AuthorInterface;
-import business.interfaces.BookInterface;
-import business.interfaces.MessageInterface;
+import business.*;
+import business.SystemController;
+import business.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 
@@ -20,17 +15,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
-public class AddBookWindow extends JFrame implements LibWindow, MessageInterface {
+public class AddBookWindow extends JFrame implements LibWindow, ControllerInterface {
     public static final AddBookWindow INSTANCE = new AddBookWindow();
 
     public static String title = "Add Book";
 
-    public BookInterface bookInterface = new BookController();
+    public ControllerInterface bookInterface = new SystemController();
 
-    public AuthorInterface authorInterface = new AuthorController();
+    public ControllerInterface authorInterface = new SystemController();
     private JLabel headerLabel = new JLabel(title);
 
     private JPanel leftAlignPanel = new JPanel();
@@ -280,10 +276,15 @@ public class AddBookWindow extends JFrame implements LibWindow, MessageInterface
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to the Library System!");
+        textArea = new JTextArea("Welcome to the Group 2: Library management System v1.0.0!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPPanel.add(textArea,BorderLayout.NORTH);
+    }
+
+    @Override
+    public void login(String id, String password) throws Group2Exception {
+
     }
 
     @Override
@@ -297,6 +298,72 @@ public class AddBookWindow extends JFrame implements LibWindow, MessageInterface
         textArea.setForeground(Util.INFO_MESSAGE_COLOR);
         textArea.setText(info);
     }
+
+    @Override
+    public List<LibraryMember> getAllLibraryMember() {
+        return null;
+    }
+
+    @Override
+    public LibraryMember createLibraryMember(String memberID, String firstName, String lastName, String street, String city, String zip, String state, String tel) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public CheckoutRecord getRecord(String memberID) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBook() {
+        return null;
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBook(String ISBN, String title, int maxCheckoutLength, List<Author> authors, List<BookCopy> copies) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public BookCopy addBookCopy(Book book) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public void updateBookCopyStatus(Book book, BookCopy bookCopy, boolean newStatus) throws Group2Exception {
+
+    }
+
+    @Override
+    public Book checkout(String memberID, String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBookCopyByISBN(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public HashMap<BookCopy, LibraryMember> find(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthor() {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthorByBook(String ISBN) {
+        return null;
+    }
+
     private void clearTextFields() {
         maxCheckOutTextField.setText("");
         ISBNField.setText("");

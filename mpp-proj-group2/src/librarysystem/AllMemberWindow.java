@@ -9,17 +9,15 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import business.controllers.MemberController;
 import business.LibraryMember;
-import business.interfaces.MemberInterface;
-import business.interfaces.ControllerInterface;
-import business.controllers.SystemController;
+import business.ControllerInterface;
+import business.SystemController;
 
 public class AllMemberWindow extends JFrame implements LibWindow {
 	public static final AllMemberWindow INSTANCE = new AllMemberWindow();
     ControllerInterface ci = new SystemController();
 
-	MemberInterface memberInterface = new MemberController();
+	ControllerInterface memberInterface = new SystemController();
 	private boolean isInitialized = false;
 	public JPanel getMainPanel() {
 		return mainPanel;
@@ -38,8 +36,10 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 	
 	public void init() {
 		if(isInitialized){
+			//setSize(1000,500);
 			return;
 		}
+		//setSize(1000,500);
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
 		defineTopPanel();
@@ -84,7 +84,7 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 		middlePanel.add(featurePanel, BorderLayout.NORTH);
 
 		List<LibraryMember> data = getAllLibraryMember();
-		String[] columnNames = new String[]{"Member ID","First Name","Last Name","Tel","Street","City","Zipcode","State", "Records"};
+		String[] columnNames = new String[]{"Member ID","First Name","Last Name","Tel.","Street","City","Zipcode","State", "Records"};
 
 		String[][] dataTable = new String[data.size()][8];
 

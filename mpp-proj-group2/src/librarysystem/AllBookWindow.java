@@ -1,9 +1,9 @@
 package librarysystem;
 
-import business.controllers.BookController;
 import business.Book;
 import business.Group2Exception;
-import business.interfaces.BookInterface;
+import business.SystemController;
+import business.ControllerInterface;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +18,7 @@ import java.util.List;
 
 public class AllBookWindow extends JFrame implements LibWindow {
 	public static final AllBookWindow INSTANCE = new AllBookWindow();
-    BookInterface bi = new BookController();
+    ControllerInterface bi = new SystemController();
 	private boolean isInitialized = false;
 	public JPanel getMainPanel() {
 		return mainPanel;
@@ -114,7 +114,7 @@ public class AllBookWindow extends JFrame implements LibWindow {
 					EventQueue.invokeLater(() ->
 					{
 						BookDetailWindow bookDetailWindow = new BookDetailWindow();
-						bookDetailWindow.setTitle("Prius Library System 1.0.0");
+						bookDetailWindow.setTitle("Group 2: Library management System v1.0.0");
 						try {
 							bookDetailWindow.setBook(isbn);
 						} catch (Group2Exception e) {

@@ -10,7 +10,7 @@ final public class Address implements Serializable {
 	private String city;
 	private String state;
 	private String zip;
-	public Address(String street, String city, String state, String zip) {
+	public Address(String street, String city,  String zip, String state) {
 		this.street = street;
 		this.city = city;
 		this.state = state;
@@ -31,7 +31,7 @@ final public class Address implements Serializable {
 	}
 	@Override
 	public String toString() {
-		return "(" + street + ", " + city + ", " + zip + ")";
+		return "(" + street + ", " + city + ", " + zip + ", " + state + ")";
 		
 	}
 }

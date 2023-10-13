@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * Rules:
- * 1. All fields must be nonempty
+ * 1. Fields cannot be empty!
  */
 public class AddBookCopyRuleSet implements RuleSet {
 	private AddBookCopyWindow bookWindow;
@@ -19,7 +19,7 @@ public class AddBookCopyRuleSet implements RuleSet {
 
 	private void nonemptyRule() throws Group2Exception {
 		if(bookWindow.getISBN().trim().isEmpty()) {
-			throw new Group2Exception("Field must be non-empty!");
+			throw new Group2Exception("Fields cannot be empty!");
 		}
 	}
 }

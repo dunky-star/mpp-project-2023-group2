@@ -7,7 +7,7 @@ import java.awt.*;
 
 /**
  * Rules:
- *  1. All fields must be nonempty
+ *  1. Fields cannot be empty
  */
 
 public class AddMemberRuleSet implements RuleSet {
@@ -29,7 +29,7 @@ public class AddMemberRuleSet implements RuleSet {
 				window.getZipCode().trim().isEmpty() ||
 				window.getStateString().trim().isEmpty()
 		) {
-			throw new Group2Exception("All fields must be non-empty!");
+			throw new Group2Exception("Fields cannot be empty!");
 		}
 	}
 

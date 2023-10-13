@@ -1,21 +1,21 @@
 package librarysystem;
 
-import business.controllers.MemberController;
-import business.LibraryMember;
-import business.Group2Exception;
-import business.interfaces.MemberInterface;
-import business.interfaces.MessageInterface;
+import business.*;
+import business.SystemController;
+import business.ControllerInterface;
 import librarysystem.rulesets.RuleSet;
 import librarysystem.rulesets.RuleSetFactory;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.HashMap;
+import java.util.List;
 
 
-public class AddMemberWindow extends JFrame implements LibWindow, MessageInterface {
+public class AddMemberWindow extends JFrame implements LibWindow, ControllerInterface {
     public static final AddMemberWindow INSTANCE = new AddMemberWindow();
 
-    private MemberInterface memberInterface = new MemberController();
+    private ControllerInterface memberInterface = new SystemController();
 
     private JTextArea textArea;
     private JPanel bottomPPanel = new JPanel(new BorderLayout());
@@ -81,7 +81,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
         if (isInitialized) {
             return;
         }
-        setSize(600,500);
+        setSize(1000,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         updateHeaderLabel();
@@ -108,7 +108,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
     }
 
     private void setupTextArea() {
-        textArea = new JTextArea("Welcome to the Library System!");
+        textArea = new JTextArea("Welcome to the Group 2: Library Management System v1.0.0!");
         textArea.setMaximumSize(new Dimension(500,10));
         Util.adjustLabelFont(textArea,Util.DARK_BLUE,true);
         bottomPPanel.add(textArea,BorderLayout.NORTH);
@@ -170,7 +170,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
             }
             showInfo("");
             clearTextFields();
-            JOptionPane.showMessageDialog(this,"Successful added " + getMemberID());
+            JOptionPane.showMessageDialog(this,"Successfully added " + getMemberID());
         });
 
     }
@@ -219,6 +219,11 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
 
 
     @Override
+    public void login(String id, String password) throws Group2Exception {
+
+    }
+
+    @Override
     public void showError(String string) {
         textArea.setForeground(Util.ERROR_MESSAGE_COLOR);
         textArea.setText(string);
@@ -228,6 +233,71 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
     public void showInfo(String info) {
         textArea.setForeground(Util.INFO_MESSAGE_COLOR);
         textArea.setText(info);
+    }
+
+    @Override
+    public List<LibraryMember> getAllLibraryMember() {
+        return null;
+    }
+
+    @Override
+    public LibraryMember createLibraryMember(String memberID, String firstName, String lastName, String street, String city, String zip, String state, String tel) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public CheckoutRecord getRecord(String memberID) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBook() {
+        return null;
+    }
+
+    @Override
+    public Book getBookById(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBook(String ISBN, String title, int maxCheckoutLength, List<Author> authors, List<BookCopy> copies) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public BookCopy addBookCopy(Book book) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public void updateBookCopyStatus(Book book, BookCopy bookCopy, boolean newStatus) throws Group2Exception {
+
+    }
+
+    @Override
+    public Book checkout(String memberID, String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public Book addBookCopyByISBN(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public HashMap<BookCopy, LibraryMember> find(String isbn) throws Group2Exception {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthor() {
+        return null;
+    }
+
+    @Override
+    public List<Author> getAllAuthorByBook(String ISBN) {
+        return null;
     }
 
     private void clearTextFields() {
@@ -266,7 +336,7 @@ public class AddMemberWindow extends JFrame implements LibWindow, MessageInterfa
     }
 
     public String getStateString() {
-        return zipCodeField.getText();
+        return stateField.getText();
     }
 
 

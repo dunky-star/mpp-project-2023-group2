@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import business.controllers.SystemController;
+import business.SystemController;
 
 public class LibrarySystem extends JFrame implements LibWindow {
 
@@ -180,7 +180,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
     	
     }
 
-	class MemberRecordActionListener implements ActionListener {
+	static class MemberRecordActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -191,7 +191,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		}
 	}
 
-	class AddMemberActionListener implements ActionListener {
+	static class AddMemberActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -202,7 +202,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		}
 	}
 
-	class AddBookCheckoutActionListener implements ActionListener {
+	static class AddBookCheckoutActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -213,7 +213,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		}
 	}
 
-	class AddBookDueDateActionListener implements ActionListener {
+	static class AddBookDueDateActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -235,7 +235,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		}
 	}
 
-	class AddBookCopyActionListener implements ActionListener {
+	static class AddBookCopyActionListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -246,7 +246,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		}
 
 	}
-    class AllBookIdsListener implements ActionListener {
+    static class AllBookIdsListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -260,7 +260,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
     	
     }
     
-    class AllMemberIdsListener implements ActionListener {
+    static class AllMemberIdsListener implements ActionListener {
 
     	@Override
 		public void actionPerformed(ActionEvent e) {
