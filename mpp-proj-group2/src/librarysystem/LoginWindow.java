@@ -195,7 +195,7 @@ public class LoginWindow extends JFrame implements LibWindow {
 					rules.applyRules(LoginWindow.this);
 					loginHandling.login(getUsername(),getPassword());
 				} catch (Group2Exception e) {
-					JOptionPane.showMessageDialog(this,e.getMessage());
+					JOptionPane.showMessageDialog(this,e.getMessage(),"Login Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
