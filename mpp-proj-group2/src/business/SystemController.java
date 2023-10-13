@@ -40,6 +40,12 @@ public class SystemController implements ControllerInterface {
 		retval.addAll(da.readBooksMap().keySet());
 		return retval;
 	}
+	@Override
+	public LibraryMember addMember(String firstName, String lastName, String telephone, String street, String city,
+			String state, String zip) throws LibrarySystemException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
