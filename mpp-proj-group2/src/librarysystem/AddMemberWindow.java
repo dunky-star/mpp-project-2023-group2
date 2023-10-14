@@ -166,6 +166,7 @@ public class AddMemberWindow extends JFrame implements LibWindow {
                 AllMemberWindow.INSTANCE.refreshTable(lm);
             } catch (Group2Exception e) {
                 memberInterface.showError(e.getMessage());
+                JOptionPane.showMessageDialog(this,e.getMessage(),"Add member Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             memberInterface.showInfo("");

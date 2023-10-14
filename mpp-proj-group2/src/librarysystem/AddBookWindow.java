@@ -214,6 +214,7 @@ public class AddBookWindow extends JFrame implements LibWindow {
                     bookInterface.showInfo("");
                 } catch (Group2Exception pe) {
                     bookInterface.showError(pe.getMessage());
+                    //JOptionPane.showMessageDialog(this,pe.getMessage(),"Login Error", JOptionPane.ERROR_MESSAGE);
                 }
                 List<Author> newAuthors = new ArrayList<>();
                 TableModel tm = authorTable.getModel();

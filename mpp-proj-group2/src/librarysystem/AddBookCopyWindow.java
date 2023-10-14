@@ -124,6 +124,7 @@ public class AddBookCopyWindow extends JFrame implements LibWindow {
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
                 bookInterface.showError(e.getMessage());
+                JOptionPane.showMessageDialog(this,e.getMessage(),"Add Book Copy Error", JOptionPane.ERROR_MESSAGE);
             }
         });
         bottomPanel.add(button);
