@@ -131,6 +131,7 @@ public class BookCheckoutWindow extends JFrame implements LibWindow {
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
                 bookInterface.showError(e.getMessage());
+                JOptionPane.showMessageDialog(this,e.getMessage(),"Book Checkout Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             bookInterface.showInfo("");
