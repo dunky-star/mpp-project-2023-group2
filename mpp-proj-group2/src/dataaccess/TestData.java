@@ -14,7 +14,7 @@ import business.LibraryMember;
  * sets up the storage units that are used in the application.
  * The main method in this class must be run once (and only
  * once) before the rest of the application can work properly.
- * It will create three serialized objects in the dataaccess.storage
+ * It will create three serialized objects in the dataaccess storage
  * folder.
  * 
  *
