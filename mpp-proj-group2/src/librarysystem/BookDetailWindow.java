@@ -153,7 +153,7 @@ public class BookDetailWindow extends JFrame implements LibWindow{
 
         });
 
-        JButton backButton = new JButton("<= Back to List");
+        JButton backButton = new JButton("<- Back to List");
         backButton.addActionListener(evt -> {
             LibrarySystem.hideAllWindows();
             AllBookWindow.INSTANCE.init();

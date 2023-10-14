@@ -1,20 +1,9 @@
 package librarysystem;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 
-import javax.swing.Box;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JSeparator;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 import business.Group2Exception;
 import business.SystemController;
@@ -195,17 +184,37 @@ public class LoginWindow extends JFrame implements LibWindow {
 					rules.applyRules(LoginWindow.this);
 					loginHandling.login(getUsername(),getPassword());
 				} catch (Group2Exception e) {
-					JOptionPane.showMessageDialog(this,e.getMessage());
+					JOptionPane.showMessageDialog(this,e.getMessage(),"Login Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 
 				clearTextFields();
-				JOptionPane.showMessageDialog(this,"Successfully logged-in");
+				//JOptionPane.showMessageDialog(this,"Successfully logged-in");
+
+				// Create a custom message panel with a green checkmark
+				JPanel messagePanel = new JPanel(new BorderLayout());
+				JLabel messageLabel = new JLabel("Successfully logged-in");
+				messageLabel.setForeground(Color.BLUE);
+
+				// Create a green checkmark icon
+				ImageIcon greenCheckIcon = Util.createGreenCheckIcon();
+				JLabel iconLabel = new JLabel(greenCheckIcon);
+
+				// Add the components to the message panel
+				messagePanel.add(iconLabel, BorderLayout.WEST);
+				messagePanel.add(messageLabel, BorderLayout.CENTER);
+
+				// Show the custom dialog
+				JOptionPane.showMessageDialog(this, messagePanel, "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
 				LibrarySystem.hideAllWindows();
 				LibrarySystem.INSTANCE.setVisible(true);
 				LibrarySystem.INSTANCE.reload();
     		});
     	}
+
+
 
 	private void clearTextFields() {
 		username.setText("");

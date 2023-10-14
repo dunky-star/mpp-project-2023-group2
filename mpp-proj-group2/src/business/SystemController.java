@@ -158,7 +158,7 @@ public class SystemController implements ControllerInterface {
 		DataAccess da = new DataAccessFacade();
 		HashMap<String, Book> map = da.readBooksMap();
 		if (map.containsKey(ISBN)) {
-			throw new Group2Exception("This ISBN existed in the system");
+			throw new Group2Exception("This ISBN exists in the system");
 		}
 		Book book = new Book(ISBN,title,maxCheckoutLength,authors, copies.toArray(new BookCopy[0]));
 		map.put(ISBN,book);

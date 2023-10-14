@@ -1,9 +1,7 @@
 package librarysystem;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.Toolkit;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -70,5 +68,18 @@ public class Util {
 		int frameHeight = f.getSize().height;
 		int frameWidth = f.getSize().width;
 		f.setLocation(((width - frameWidth) / 2), (height - frameHeight) / 3);
+	}
+
+	public static ImageIcon createGreenCheckIcon() {
+		// Create a green checkmark icon
+		int size = 32;
+		BufferedImage image = new BufferedImage(size, size, BufferedImage.TYPE_INT_ARGB);
+		Graphics2D g2d = image.createGraphics();
+		g2d.setColor(Color.BLUE);
+		g2d.setStroke(new BasicStroke(3));
+		g2d.drawLine(5, size / 2, size / 2 - 2, size - 5);
+		g2d.drawLine(size / 2 - 2, size - 5, size - 5, 5);
+		g2d.dispose();
+		return new ImageIcon(image);
 	}
 }

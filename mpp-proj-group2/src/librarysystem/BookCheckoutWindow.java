@@ -131,11 +131,33 @@ public class BookCheckoutWindow extends JFrame implements LibWindow {
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
                 bookInterface.showError(e.getMessage());
+                JOptionPane.showMessageDialog(this,e.getMessage(),"Book Checkout Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             bookInterface.showInfo("");
             clearTextFields();
-            JOptionPane.showMessageDialog(this,"Successfully checked out " + getISBN());
+            //JOptionPane.showMessageDialog(this,"Successfully checked out " + getISBN());
+
+
+            // Create a custom message panel with a green checkmark
+            JPanel messagePanel = new JPanel(new BorderLayout());
+            JLabel messageLabel = new JLabel("Successfully checked out " + getISBN());
+            messageLabel.setForeground(Color.BLUE);
+
+            // Create a green checkmark icon
+            ImageIcon greenCheckIcon = Util.createGreenCheckIcon();
+            JLabel iconLabel = new JLabel(greenCheckIcon);
+
+            // Add the components to the message panel
+            messagePanel.add(iconLabel, BorderLayout.WEST);
+            messagePanel.add(messageLabel, BorderLayout.CENTER);
+
+            // Show the custom dialog
+            JOptionPane.showMessageDialog(this, messagePanel, "Book check out Successful", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+
             reloadTable(memberID);
         });
         middlePanel.add(buttonPanel);

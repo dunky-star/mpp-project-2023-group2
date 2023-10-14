@@ -77,7 +77,7 @@ public class AllMemberWindow extends JFrame implements LibWindow {
 			}
 		});
 
-		JButton backButton = new JButton("<== Back to Main");
+		JButton backButton = new JButton("<- Back to Main");
 		addBackButtonListener(backButton);
 		featurePanel.add(backButton, BorderLayout.WEST);
 
