@@ -105,7 +105,7 @@ public class AddBookCopyWindow extends JFrame implements LibWindow {
 
         middleWrapperPanel.add(bottomPanel,BorderLayout.CENTER);
 
-        JButton backButton = new JButton("<= Back to Main");
+        JButton backButton = new JButton("<- Back to Main");
         backButton.addActionListener(evt -> {
             LibrarySystem.hideAllWindows();
 
@@ -120,7 +120,30 @@ public class AddBookCopyWindow extends JFrame implements LibWindow {
                 rules.applyRules(AddBookCopyWindow.this);
                 Book book = bookInterface.addBookCopyByISBN(getISBN());
                 bookInterface.showInfo("");
-                JOptionPane.showMessageDialog(this,"Copy of the book is added successfully.");
+                //JOptionPane.showMessageDialog(this,"Copy of the book is added successfully.");
+
+
+
+                // Create a custom message panel with a green checkmark
+                JPanel messagePanel = new JPanel(new BorderLayout());
+                JLabel messageLabel = new JLabel("Copy of the book was added successfully ");
+                messageLabel.setForeground(Color.BLUE);
+
+                // Create a green checkmark icon
+                ImageIcon greenCheckIcon = Util.createGreenCheckIcon();
+                JLabel iconLabel = new JLabel(greenCheckIcon);
+
+                // Add the components to the message panel
+                messagePanel.add(iconLabel, BorderLayout.WEST);
+                messagePanel.add(messageLabel, BorderLayout.CENTER);
+
+                // Show the custom dialog
+                JOptionPane.showMessageDialog(this, messagePanel, "Book copy added Successfully", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+
+
                 AllBookWindow.INSTANCE.updateAvailableCountRecord(book);
             } catch (Group2Exception e) {
                 bookInterface.showError(e.getMessage());

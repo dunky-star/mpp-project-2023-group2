@@ -135,7 +135,7 @@ public class AddMemberWindow extends JFrame implements LibWindow {
         bottomPanel.add(button,BorderLayout.NORTH);
         middleWrapperPanel.add(bottomPanel,BorderLayout.CENTER);
 
-        JButton backButton = new JButton("<= Back to List");
+        JButton backButton = new JButton("<- Back to List");
         backButton.addActionListener(evt -> {
             LibrarySystem.hideAllWindows();
             AllMemberWindow.INSTANCE.init();
@@ -171,7 +171,30 @@ public class AddMemberWindow extends JFrame implements LibWindow {
             }
             memberInterface.showInfo("");
             clearTextFields();
-            JOptionPane.showMessageDialog(this,"Successfully added " + getMemberID());
+          //  JOptionPane.showMessageDialog(this,"Successfully added " + getMemberID());
+
+
+
+
+            // Create a custom message panel with a green checkmark
+            JPanel messagePanel = new JPanel(new BorderLayout());
+            JLabel messageLabel = new JLabel("Successfully added " + getMemberID().toString());
+            messageLabel.setForeground(Color.BLUE);
+
+            // Create a green checkmark icon
+            ImageIcon greenCheckIcon = Util.createGreenCheckIcon();
+            JLabel iconLabel = new JLabel(greenCheckIcon);
+
+            // Add the components to the message panel
+            messagePanel.add(iconLabel, BorderLayout.WEST);
+            messagePanel.add(messageLabel, BorderLayout.CENTER);
+
+            // Show the custom dialog
+            JOptionPane.showMessageDialog(this, messagePanel, "Member added Successfully", JOptionPane.INFORMATION_MESSAGE);
+
+
+
+
         });
 
     }

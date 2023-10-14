@@ -78,7 +78,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		memberMenu = new JMenu("Member");
 		menuBar.add(memberMenu);
 
-		allMemberIds = new JMenuItem("All Member");
+		allMemberIds = new JMenuItem("All Members");
 		allMemberIds.addActionListener(new AllMemberIdsListener());
 		memberMenu.add(allMemberIds);
 
@@ -89,7 +89,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		bookMenu = new JMenu("Book");
 		menuBar.add(bookMenu);
 
-		allBookIds = new JMenuItem("All Book");
+		allBookIds = new JMenuItem("All Books");
 		allBookIds.addActionListener(new AllBookIdsListener());
 		bookMenu.add(allBookIds);
 
@@ -128,7 +128,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		memberMenu = new JMenu("Member");
 		menuBar.add(memberMenu);
 
-		allMemberIds = new JMenuItem("All Member");
+		allMemberIds = new JMenuItem("All Members");
 		allMemberIds.addActionListener(new AllMemberIdsListener());
 		memberMenu.add(allMemberIds);
 
@@ -144,7 +144,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 		bookMenu = new JMenu("Book");
 		menuBar.add(bookMenu);
 
-		allBookIds = new JMenuItem("All Book");
+		allBookIds = new JMenuItem("All Books");
 		allBookIds.addActionListener(new AllBookIdsListener());
 		bookMenu.add(allBookIds);
 
