@@ -138,7 +138,7 @@ public class BookDueDateWindow extends JFrame implements LibWindow {
     }
 
     private void setupBackButton() {
-        JButton backButton = new JButton("<= Back to Main");
+        JButton backButton = new JButton("<- Back to Main");
         backButton.addActionListener(evt -> {
             LibrarySystem.hideAllWindows();
 
