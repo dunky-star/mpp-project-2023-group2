@@ -99,7 +99,7 @@ public class LoginWindow extends JFrame implements LibWindow {
     		lowerHalf = new JPanel();
     		lowerHalf.setLayout(new FlowLayout(FlowLayout.LEFT));
     		
-    		JButton backButton = new JButton("<= Back to Main");
+    		JButton backButton = new JButton("<- Back to Main");
     		addBackButtonListener(backButton);
     		lowerHalf.add(backButton);
     		

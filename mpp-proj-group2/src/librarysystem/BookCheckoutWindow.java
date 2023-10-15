@@ -122,6 +122,9 @@ public class BookCheckoutWindow extends JFrame implements LibWindow {
         buttonPanel.add(Box.createRigidArea(new Dimension(0, 10)));
 
         button.setSize(100,30);
+
+
+
         button.addActionListener((evt) -> {
             String memberID = getMemberID();
             try {
@@ -144,7 +147,7 @@ public class BookCheckoutWindow extends JFrame implements LibWindow {
             JLabel messageLabel = new JLabel("Successfully checked out " + getISBN());
             messageLabel.setForeground(Color.BLUE);
 
-            // Create a green checkmark icon
+            // Create a blue checkmark icon
             ImageIcon greenCheckIcon = Util.createGreenCheckIcon();
             JLabel iconLabel = new JLabel(greenCheckIcon);
 

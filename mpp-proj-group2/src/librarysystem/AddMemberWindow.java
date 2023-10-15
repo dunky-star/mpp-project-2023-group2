@@ -12,6 +12,8 @@ import java.util.HashMap;
 import java.util.List;
 
 
+
+
 public class AddMemberWindow extends JFrame implements LibWindow {
     public static final AddMemberWindow INSTANCE = new AddMemberWindow();
 
@@ -30,9 +32,11 @@ public class AddMemberWindow extends JFrame implements LibWindow {
     private JPanel leftAlignPanel = new JPanel();
     private JPanel rightAlignPanel = new JPanel();
 
-    // memberID
+    // memberID----> Trying to auto increment it
     private JLabel memberIdLabel = new JLabel("Member ID");
     private JTextField memberIDField = new JTextField(10);
+    private static int lastMemberId = 1008;
+
 
     // First Name
     private JLabel firstNameLabel = new JLabel("First name");
@@ -95,6 +99,11 @@ public class AddMemberWindow extends JFrame implements LibWindow {
         isInitialized(true);
         setUpVerticalPane();
         getContentPane().add(splitPaneOuter);
+        // new added
+//       String memberID = UUID.randomUUID().toString();
+       memberIDField.setText(String.valueOf(++lastMemberId));
+       memberIDField.setEditable(false);
+        memberIDField.setBackground(new Color(240, 240, 240));
 
     }
 

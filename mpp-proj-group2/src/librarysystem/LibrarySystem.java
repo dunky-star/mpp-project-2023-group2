@@ -75,6 +75,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
     }
     
     private void addMenuItemsForAdmin() {
+		LibrarySystem.INSTANCE.setTitle("Group 2: Library Management System v1.0.0_ADMIN");
 		memberMenu = new JMenu("Member");
 		menuBar.add(memberMenu);
 
@@ -99,6 +100,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 	}
 
 	private void addMenuItemsForLibrarian() {
+		LibrarySystem.INSTANCE.setTitle("Group 2: Library Management System v1.0.0_LIBRARIAN");
 		memberMenu = new JMenu("Member");
 		menuBar.add(memberMenu);
 
@@ -125,6 +127,7 @@ public class LibrarySystem extends JFrame implements LibWindow {
 	}
 
 	private void addMenuItemsForBoth() {
+		LibrarySystem.INSTANCE.setTitle("Group 2: Library Management System v1.0.0_BOTH");
 		memberMenu = new JMenu("Member");
 		menuBar.add(memberMenu);
 
