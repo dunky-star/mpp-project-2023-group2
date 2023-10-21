@@ -1,6 +1,6 @@
 # Java-Swing-AWT
-MVC Architecture.
-Object Creation Factory Pattern.
+[MVC Architecture]
+[Object Creation Factory Pattern]
 
 
 	A simple library management desktop application using Java Swing and local file storage. 
